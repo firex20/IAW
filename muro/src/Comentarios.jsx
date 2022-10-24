@@ -1,18 +1,17 @@
 import React from 'react';
-
-const Rotulo = ({comment}) => {
+ 
+const Comentarios = ({comment}) => {
 
     return (
         <div>
-            {/* comentarios */}
             <ul>
-                {comment.map((comentario) => {
-                console.log({comentario});
-                return (<li>{comentario.texto}</li>)
+                {comment.map((comentario, i) => {
+                return (<li key={i} className={comentario.leido ? 'leido':'noleido'}>{comentario.texto}</li>)
                 })}
             </ul>
         </div>
     )
 }
 
-export default Rotulo;
+
+export default Comentarios;

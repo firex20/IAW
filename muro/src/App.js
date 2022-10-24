@@ -1,28 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Rotulo from './Rotulo';
 import Input from './Input';
 import Comentarios from './Comentarios';
+import './App.css';
 
-//const App = ({rotulo, comentarios}) => {
 const App = ({props}) => {
-    /*console.log({rotulo})*/
-    console.log(props.rotulo)
 
-    //const lista = props.comentarios.map((comentario) => <li>{comentario.texto}</li>)
-
-    //console.log(lista)
+    let [comentarios, setComentarios] = useState(props.comentarios);
+    console.log(comentarios[0].leido);
+    const addtext = () =>{
+        let newc;
+        let check = document.getElementById("readed");
+        if(check.checked){
+            newc = {texto: document.getElementById("newcomment").value, leido: true};
+        }else{
+            newc = {texto: document.getElementById("newcomment").value, leido: false};
+        }
+        setComentarios([...comentarios, newc]);
+    };
     return (
 
         <div>
-            {/*<h1>{rotulo.titulo}</h1>
-            <h2>{rotulo.nombre} {rotulo.apellido}</h2>*/}
-            {/*<h1>{props.rotulo.titulo}</h1>
-            <h2>{props.rotulo.nombre} {props.rotulo.apellido}</h2>*/}
             <Rotulo rotul={props.rotulo} />
-            {/* Un componente */}
-            <Input input={props.input} />
-            {/* Otro componente */}
-            <Comentarios comment={props.comentarios} />
+            <Input input={props.input} onPulsar={() => addtext()}/>
+            <Comentarios comment={comentarios} />
         </div>
 
     );
