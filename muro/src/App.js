@@ -3,6 +3,7 @@ import Rotulo from './Rotulo';
 import Input from './Input';
 import Comentarios from './Comentarios';
 import './App.css';
+import './bootstrap/dist/css/bootstrap.min.css';
 
 const App = ({props}) => {
 
